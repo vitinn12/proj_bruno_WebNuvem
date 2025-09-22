@@ -19,7 +19,6 @@ import os
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
@@ -30,7 +29,6 @@ SECRET_KEY = 'django-insecure-8ghd6lhpqlwfhv!boj+-#-v*-*6fe9b^x!!lf%pqxplor7#zet
 DEBUG = False
 
 ALLOWED_HOSTS = ['vitinho12.pythonanywhere.com']
-
 
 # Application definition
 
@@ -107,9 +105,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
