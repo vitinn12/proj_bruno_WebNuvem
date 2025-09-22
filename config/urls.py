@@ -21,5 +21,4 @@ from core import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index),
-    path('produtos/', views.lista_produtos, name='lista_produtos'),
 ]
