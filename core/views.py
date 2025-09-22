@@ -3,18 +3,16 @@ from .models import Produto
 
 # Create your views here.
 def index (request):
-    return render (request, 'index.html')
+    if request.method == "POST":
+        nome = request.POST.get("nome")
+        descricao = request.POST.get("descricao")
+        preco = request.POST.get("preco")
 
+        # salva direto no banco
+        Produto.objects.create(nome=nome, descricao=descricao, preco=preco)
 
-def home(request):
-    if request.method == 'POST':
-        nome = request.POST.get('nome')
-        preco = request.POST.get('preco')
-        if nome and preco:
-            try:
-                Produto.objects.create(nome=nome, preco=preco)
-            except Exception as e:
-                print("Erro ao criar produto:", e)
-        return redirect('home')
+        return redirect("index")  # recarrega a página
+
+    # lista produtos
     produtos = Produto.objects.all()
-    return render(request, 'index.html', {'produtos': produtos})
+    return render(request, "index.html", {"produtos": produtos})
