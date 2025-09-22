@@ -1,18 +1,17 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Produto
 
-# Create your views here.
-def index (request):
+def index(request):
     if request.method == "POST":
-        nome = request.POST.get("nome")
-        descricao = request.POST.get("descricao")
-        preco = request.POST.get("preco")
-
-        # salva direto no banco
-        Produto.objects.create(nome=nome, descricao=descricao, preco=preco)
-
-        return redirect("index")  # recarrega a página
-
-    # lista produtos
+        # Cadastrar produto
+        if "cadastrar" in request.POST:
+            nome = request.POST.get("nome")
+            preco = request.POST.get("preco")
+            Produto.objects.create(nome=nome, preco=preco)
+        elif "deletar" in request.POST:
+            produto_id = request.POST.get("produto_id")
+            produto = get_object_or_404(Produto, id=produto_id)
+            produto.delete()
+        return redirect("index")
     produtos = Produto.objects.all()
     return render(request, "index.html", {"produtos": produtos})
