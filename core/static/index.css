@@ -5,3 +5,7 @@ body {
     place-content: center;
     height:90vh;
 }
+.produtos {
+    display: flex;
+    flex-direction: row;
+}
